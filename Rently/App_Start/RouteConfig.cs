@@ -13,6 +13,24 @@ namespace Rently
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "Actionss",
+            //    url: "Customers",
+            //    defaults: new { controller = "Customer" }
+            //);
+
+            routes.MapRoute(
+                name: "Cars",
+                url: "Cars",
+                defaults: new { controller = "Car", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "Action",
+                url: "Car/Action/{year}/{month}",
+                defaults: new { controller = "Car", action = "Action"}
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

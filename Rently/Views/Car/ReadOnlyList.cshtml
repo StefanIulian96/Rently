@@ -1,0 +1,57 @@
+﻿
+@model IEnumerable<Rently.Models.Car>
+
+
+@{
+    ViewBag.Title = "Cars";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Cars</h2>
+
+
+<table id = "cars" class = "table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Car</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach (var car in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(car.Name, "Edit", "Car", new { id = car.Id }, null)</td>
+            <td>@car.CarType.Type</td>
+        </tr>
+    }*@
+        </tbody>
+    </table>
+
+    @section scripts
+    {
+        <script>
+            $(document).ready(function () {
+
+
+               var table = $("#cars").DataTable({
+                    ajax: {
+                        url: "/api/cars/",
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "name",
+                        },
+                        {
+                            data: "carType.type"
+                        }
+                    ]
+                });
+
+
+            });
+        </script>
+
+    }

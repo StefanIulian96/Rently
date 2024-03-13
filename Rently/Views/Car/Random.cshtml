@@ -1,0 +1,39 @@
+﻿
+@model Rently.ViewModels.RandomCarViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* 
+    This is a comment!
+*@
+
+
+@{ 
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+}
+
+<h2 class="@className">@Model.Car.Name</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <p>No one has rented this car before.</p>
+}
+
+else
+
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
+
+
+
+
+
